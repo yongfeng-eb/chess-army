@@ -1,0 +1,71 @@
+<h1>
+  player home page
+</h1>
+<hr>
+<h2>
+  Leader-Board Information
+</h2>
+<br>
+<table style="width:800px;text-align: center">
+  <tr>
+    <th>Name</th>
+    <th>Win Count</th>
+    <th>Lose Count</th>
+    <th>Total Count</th>
+    <th>Rank</th>
+  </tr>
+  <% @leader_board_lines.each do |line| %>
+    <tr>
+      <td><%= line.player_id %></td>
+      <td><%= line.win_count %></td>
+      <td><%= line.lose_count %></td>
+      <td><%= line.total_count %></td>
+    </tr>
+  <% end %>
+</table>
+
+<hr>
+
+<%= form_with url: '/preset' do |form| %>
+  <%= form.button 'Create Preset' %>
+  <%= form.hidden_field :string, name: 'user_id', value: @current_player_id %>
+  <%= form.hidden_field :string, name: 'first_access', value: 'first_access' %>
+<% end %>
+
+<hr>
+
+<h2>
+  Room Information
+</h2>
+<%= form_with url: '/room' do |form| %>
+  <%= form.button 'Create Room', value: @current_player_id, name: 'create_room_player_id' %>
+  <%= form.hidden_field :string, value: @current_player_id, name: 'user_id' %>
+<% end %>
+<br>
+<table style="width:800px;text-align: center">
+  <tr>
+    <th>Room Number</th>
+    <th>Red Player Name</th>
+    <th>Blue Player Name</th>
+    <th>Room Status</th>
+  </tr>
+  <% @rooms.each do |room| %>
+    <tr>
+      <%= form_with url: '/preset_chess_layout', method: 'put' do |form| %>
+        <td><%= room.room_id %></td>
+        <td><%= room.red_player_id %></td>
+        <td><%= room.blue_player_id %></td>
+        <% if room.room_status == false %>
+          <td><%= form.button 'Is Playing', disabled: true %></td>
+        <% else %>
+          <td>
+            <%= form.button 'Is Waiting', value: @current_player_id, name: 'join_room_player_id' %>
+            <%= form.hidden_field :string, value: room.room_id, name: 'room_id' %>
+            <%= form.hidden_field :string, value: 'blue_hand', name: 'which_hand' %>
+            <%= form.hidden_field :string, name: 'user_id', value: @current_player_id %>
+          </td>
+        <% end %>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
