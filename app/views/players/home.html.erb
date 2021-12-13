@@ -37,10 +37,12 @@
 <h2>
   Room Information
 </h2>
+
 <%= form_with url: '/room' do |form| %>
   <%= form.button 'Create Room', value: @current_player_id, name: 'create_room_player_id' %>
   <%= form.hidden_field :string, value: @current_player_id, name: 'user_id' %>
 <% end %>
+
 <br>
 <table style="width:800px;text-align: center">
   <tr>
