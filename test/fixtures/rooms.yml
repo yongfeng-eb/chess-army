@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  room_id: MyString
+  red_player_id: MyString
+  blue_player_id: MyString
+  room_status: false
+  next_turn: false
+  is_game_over: false
+
+two:
+  room_id: MyString
+  red_player_id: MyString
+  blue_player_id: MyString
+  room_status: false
+  next_turn: false
+  is_game_over: false

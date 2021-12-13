@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: MyString
+  player_name: MyString
+  password: MyString
+  is_login: false
+  is_gaming: false
+
+two:
+  user_id: MyString
+  player_name: MyString
+  password: MyString
+  is_login: false
+  is_gaming: false

@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  position_id: 1
+  x_position: 1
+  y_position: 1
+  position_type: MyString
+
+two:
+  position_id: 1
+  x_position: 1
+  y_position: 1
+  position_type: MyString
