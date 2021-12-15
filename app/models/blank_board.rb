@@ -5,7 +5,8 @@ class BlankBoard < ApplicationRecord
   has_many :all_chess_per_hands, through: :presets
 
   has_many :realtime_games
-  has_many :all_chess_per_hands, through: :realtime_games
+  has_many :hands, through: :realtime_games, source: 'all_chess_per_hand'
+
 
   def self.landmine_min_y
     10

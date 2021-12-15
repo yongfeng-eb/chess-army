@@ -1,0 +1,42 @@
+<h1>
+  choose preset layouts page
+</h1>
+
+<hr>
+
+<% if @own_preset_ids.length == 0 %>
+  You have no preset and will use default preset.
+  Click this button to start:
+  <%= form_with url: '/real_time_info', method: 'post' do |form| %>
+    <%= form.button 'Start', name: 'chosen_preset_id', value: 11 %>
+
+    <%= form.hidden_field :string, name: 'room_id', value: @room_id %>
+    <%= form.hidden_field :string, name: 'player_detail', value: @player_detail %>
+    <% if @create_room_player_id.nil? %>
+      <%= form.hidden_field :string, name: 'user_id', value: @join_room_player_id %>
+    <% else %>
+      <%= form.hidden_field :string, name: 'user_id', value: @create_room_player_id %>
+    <% end %>
+  <% end %>
+
+<% else %>
+  Choose one preset layout from:
+  <%= form_with url: '/real_time_info', method: 'post' do |form| %>
+    <% @own_preset_ids.each do |preset_id| %>
+      <h1>
+
+        <%= preset_id %>
+      </h1>
+      <%= form.button preset_id, name: 'chosen_preset_id', value: preset_id %>
+
+      <%= form.hidden_field :string, name: 'room_id', value: @room_id %>
+      <%= form.hidden_field :string, name: 'player_detail', value: @player_detail %>
+
+      <% if @create_room_player_id.nil? %>
+        <%= form.hidden_field :string, name: 'user_id', value: @join_room_player_id %>
+      <% else %>
+        <%= form.hidden_field :string, name: 'user_id', value: @create_room_player_id %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

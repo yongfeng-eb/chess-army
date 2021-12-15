@@ -1,7 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  game_id: 1
+  game_id: MyString
+  red_or_blue: 1
 
 two:
-  game_id: 1
+  game_id: MyString
+  red_or_blue: 1

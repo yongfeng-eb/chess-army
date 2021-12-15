@@ -10,22 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_14_083529) do
+ActiveRecord::Schema.define(version: 2021_12_15_071618) do
 
   create_table "all_chess_per_hands", charset: "latin1", force: :cascade do |t|
     t.bigint "chess_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["chess_id"], name: "index_all_chess_per_hands_on_chess_id"
-  end
-
-  create_table "bb", charset: "latin1", force: :cascade do |t|
-    t.integer "position_id"
-    t.integer "x_position"
-    t.integer "y_position"
-    t.string "position_type"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "blank_boards", charset: "latin1", force: :cascade do |t|
@@ -95,13 +86,13 @@ ActiveRecord::Schema.define(version: 2021_12_14_083529) do
 
   create_table "realtime_games", charset: "latin1", force: :cascade do |t|
     t.string "game_id"
-    t.bigint "chess_id"
+    t.bigint "all_chess_per_hand_id"
     t.bigint "blank_board_id"
     t.integer "red_or_blue"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["all_chess_per_hand_id"], name: "index_realtime_games_on_all_chess_per_hand_id"
     t.index ["blank_board_id"], name: "index_realtime_games_on_blank_board_id"
-    t.index ["chess_id"], name: "index_realtime_games_on_chess_id"
   end
 
   create_table "rooms", charset: "latin1", force: :cascade do |t|
