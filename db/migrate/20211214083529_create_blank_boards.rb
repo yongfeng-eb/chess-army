@@ -8,12 +8,5 @@ class CreateBlankBoards < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
-
-    create_table :rail_spaces do |t|
-      t.belongs_to :blank_board
-      t.string :near_position
-
-      t.timestamps
-    end
   end
 end

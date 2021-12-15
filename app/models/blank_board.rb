@@ -6,4 +6,16 @@ class BlankBoard < ApplicationRecord
 
   has_many :realtime_games
   has_many :all_chess_per_hands, through: :realtime_games
+
+  def self.landmine_min_y
+    10
+  end
+
+  def self.base_camp_type
+    'base_camp'
+  end
+
+  def self.camp_type
+    'camp'
+  end
 end

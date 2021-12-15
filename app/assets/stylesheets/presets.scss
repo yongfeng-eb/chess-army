@@ -1,0 +1,17 @@
+// Place all the styles related to the Presets controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.blank_space {
+  min-height: 30px;
+  min-width: 100px;
+  border: none;
+  background: #d8d8d8;
+}
+.camp_space {
+  border-radius: 15px;
+  color: #999999;
+}
+
+.base_camp_space {
+  border: 2px solid red;
+}

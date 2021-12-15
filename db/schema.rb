@@ -10,13 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_13_094417) do
+ActiveRecord::Schema.define(version: 2021_12_14_083529) do
 
   create_table "all_chess_per_hands", charset: "latin1", force: :cascade do |t|
     t.bigint "chess_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["chess_id"], name: "index_all_chess_per_hands_on_chess_id"
+  end
+
+  create_table "bb", charset: "latin1", force: :cascade do |t|
+    t.integer "position_id"
+    t.integer "x_position"
+    t.integer "y_position"
+    t.string "position_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "blank_boards", charset: "latin1", force: :cascade do |t|
@@ -28,7 +37,7 @@ ActiveRecord::Schema.define(version: 2021_12_13_094417) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "chesses", charset: "latin1", force: :cascade do |t|
+  create_table "chesses", charset: "utf8mb4", force: :cascade do |t|
     t.integer "chess_id"
     t.string "chess_name"
     t.integer "chess_priority"
@@ -64,12 +73,13 @@ ActiveRecord::Schema.define(version: 2021_12_13_094417) do
     t.index ["player_id"], name: "index_preset_owners_on_player_id"
   end
 
-  create_table "presets", charset: "latin1", force: :cascade do |t|
+  create_table "presets", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "preset_owner_id"
     t.bigint "all_chess_per_hand_id"
     t.bigint "blank_board_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_placed"
     t.index ["all_chess_per_hand_id"], name: "index_presets_on_all_chess_per_hand_id"
     t.index ["blank_board_id"], name: "index_presets_on_blank_board_id"
     t.index ["preset_owner_id"], name: "index_presets_on_preset_owner_id"
