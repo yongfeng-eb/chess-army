@@ -1,0 +1,17 @@
+<h1>
+  rooms create page
+</h1>
+
+<h2>
+  Created Success!!
+</h2>
+
+<div>Click this
+  <%= form_with url: '/preset_chess_layout', method: 'put' do |form| %>
+    <%= form.button 'button' %>
+    <%= form.hidden_field :string, value: @room_id.to_s, name: 'room_id' %>
+    <%= form.hidden_field :string, value: 'red_hand', name: 'which_hand' %>
+    <%= form.hidden_field :string, value: @create_room_player_id, name: 'user_id' %>
+  <% end %>
+  to enter the room.
+</div>

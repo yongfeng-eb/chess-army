@@ -1,0 +1,77 @@
+<h1>
+  placing chess
+</h1>
+<hr>
+<h2><%= @info_flag %></h2>
+<h3><%= @preset_owner_id %></h3>
+
+<%= form_with url: '/preset' do |form| %>
+  <%= form.hidden_field :string, name: 'has_put_chess', value: @has_put_chess %>
+  <%= form.hidden_field :string, name: 'preset_owner_id', value: @preset_owner_id %>
+  <%= form.hidden_field :string, name: 'begin_put', value: 'begin_put' %>
+  <%= form.hidden_field :string, name: 'clicked_button_type', value: 'placed_chess' %>
+  <%= form.hidden_field :string, name: 'user_id', value: @current_player_id %>
+
+  <% @chess_per_preset.each do |chess| %>
+    <% if chess.is_placed == true %>
+      <%= form.button @chess_names[chess.all_chess_per_hand_id - 1],
+                      value: chess.all_chess_per_hand_id,
+                      name: 'clicked_chess',
+                      disabled: true %>
+    <% else %>
+      <%= form.button @chess_names[chess.all_chess_per_hand_id - 1],
+                      value: chess.all_chess_per_hand_id,
+                      name: 'clicked_chess' %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<br>
+
+<%= form_with url: '/playing' do |form| %>
+  <%= form.hidden_field :string, name: 'user_id', value: @current_player_id %>
+
+  <% if @has_put_chess.split(',').size == 25 %>
+    <div>
+      Click this button:
+      <%= form.button 'Finish!' %> to go back to personal homepage.
+    </div>
+  <% end %>
+<% end %>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<%= form_with url: '/preset' do |form| %>
+  <%= form.hidden_field :string, name: 'has_put_chess', value: @has_put_chess %>
+  <%= form.hidden_field :string, name: 'preset_owner_id', value: @preset_owner_id %>
+  <%= form.hidden_field :string, name: 'begin_put', value: 'begin_put' %>
+  <%= form.hidden_field :string, name: 'clicked_button_type', value: 'blank_space' %>
+  <%= form.hidden_field :string, name: 'user_id', value: @current_player_id %>
+  <%= form.hidden_field :string, name: 'first_clicked_chess', value: @first_clicked_chess_id %>
+
+  <% @all_blank_board.each do |space| %>
+    <% if space.position_type == 'camp' %>
+      <%= form.button @board_content[space.position_id - 31], value: space.position_id, name: 'put_chess_position', class: 'camp_space blank_space' %>
+
+    <% elsif space.position_type == 'base_camp' %>
+      <%= form.button @board_content[space.position_id - 31], value: space.position_id, name: 'put_chess_position', class: 'base_camp_space blank_space' %>
+
+    <% else %>
+      <%= form.button @board_content[space.position_id - 31], value: space.position_id, name: 'put_chess_position', class: 'blank_space' %>
+    <% end %>
+
+    <% @element_count_inline += 1 %>
+    <% @vertical_count += 1 %>
+
+    <% if @element_count_inline == 5 %>
+      <br>
+      <br>
+      <% @element_count_inline = 0 %>
+    <% end %>
+
+  <% end %>
+<% end %>

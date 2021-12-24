@@ -1,0 +1,42 @@
+<h1>Welcome to Army Chess</h1>
+
+<% flash.each do |type, msg| %>
+  <h2>
+    <%= msg %>
+  </h2>
+<% end %>
+
+<%= form_with url: '/player/authority' do |form| %>
+  <div>
+    <%= form.label :user_id, 'Player_id: ' %>
+    <%= form.text_field :user_id%>
+  </div>
+  <br>
+  <div>
+    <%= form.label :password, 'Password: ' %>
+    <%= form.password_field :password %>
+  </div>
+  <br>
+  <div>
+    <%= form.submit 'Login In' %>
+  </div>
+<% end %>
+
+<%= form_with url: '/player' do |form| %>
+  <br>
+  <div>Didn't have an account?</div>
+  <div>
+    <%= form.button "Sign Up" %>
+  </div>
+<% end %>
+
+<h2>
+  规则介绍
+</h2>
+<div>
+  军棋的棋子每方各有25个，分别为军旗、司令、军长各一；师长、旅长、团长、营长、炸弹各二；连长、排长、工兵、地雷各三。
+</div>
+<br>
+<div>
+  司令>军长>师长>旅长>团长>营长>连长>排长>工兵；小棋遇大棋被吃；相同棋子相遇，则同归于尽；工兵与炸弹能排除地雷，其它棋子不能排雷，不可排雷的棋子碰到地雷会被吃；任何棋子都能吃掉军旗；炸弹与任何棋子相遇时同归于尽。（另有一种玩法为工兵被吃完后，可用场上最小的棋子碰地雷同归于尽。）
+</div>

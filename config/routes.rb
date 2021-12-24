@@ -1,3 +1,20 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root 'players#index'
+
+  get '/game_result', to: 'game_over#index'
+
+  put '/preset_chess_layout', to: 'preset_chess_layouts#choose'
+
+  post '/preset', to: 'presets#create'
+  get '/preset', to: 'presets#create'
+
+  post '/room', to: 'rooms#create'
+
+  post '/real_time_info', to: 'preset_chess_layouts#prepared'
+  get '/real_time_info', to: 'realtime_games#playing'
+  put '/real_time_info', to: 'realtime_games#playing'
+
+  post '/player/authority', to: 'players#home'
+  get '/player/authority', to: 'players#home'
+  post '/player', to: 'players#create'
 end

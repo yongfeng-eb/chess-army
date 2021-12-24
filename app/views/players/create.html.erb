@@ -1,0 +1,23 @@
+<h1>Welcome to Sign In</h1>
+
+<%= form_with url: '/player' do |form| %>
+  <div>
+    <%= form.label :user_id, 'Your ID is here: ' %>
+    <%= form.text_field :user_id, value: @user_id, disabled: true %>
+    <%= form.text_field :user_id, value: @user_id, hidden:true %>
+  </div>
+  <br>
+  <div>
+    <%= form.label :player_name, 'Please input your name: ' %>
+    <%= form.text_field :player_name %>
+  </div>
+  <br>
+  <div>
+    <%= form.label :password, 'Please input your password: ' %>
+    <%= form.password_field :password %>
+  </div>
+  <br>
+  <div>
+    <%= form.submit 'Save' %>
+  </div>
+<% end %>
