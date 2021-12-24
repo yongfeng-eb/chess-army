@@ -1,0 +1,31 @@
+// Place all the styles related to the RealtimeGames controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.camp_space {
+  min-height: 30px;
+  min-width: 30px;
+  border-radius: 15px;
+}
+
+.normal_chess {
+  min-height: 30px;
+  min-width: 100px;
+  border: none;
+}
+
+.red_chess {
+  background:#ffa5a5;
+}
+
+.blue_chess {
+  background: #99d2ff;
+}
+
+.camp_chess {
+  background: #e3e3e3;
+  color: #8e8e8e;
+}
+
+.camp_chess_flag {
+  border-radius: 15px;
+}

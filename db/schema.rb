@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_15_071618) do
+ActiveRecord::Schema.define(version: 2021_12_16_082616) do
 
   create_table "all_chess_per_hands", charset: "latin1", force: :cascade do |t|
     t.bigint "chess_id"
@@ -44,6 +44,13 @@ ActiveRecord::Schema.define(version: 2021_12_15_071618) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["player_id"], name: "index_leader_boards_on_player_id"
+  end
+
+  create_table "line_of_spaces", charset: "latin1", force: :cascade do |t|
+    t.integer "one_position_id"
+    t.integer "two_position_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "players", charset: "latin1", force: :cascade do |t|

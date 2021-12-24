@@ -9,6 +9,10 @@
     <%= form.hidden_field :string, name: 'room_id', value: @room_id %>
     <%= form.hidden_field :string, name: 'user_id', value: @user_id %>
     <%= form.hidden_field :string, name: 'player_detail', value: @player_detail %>
+    <%= form.hidden_field :string, name: 'first_access', value: 'first_access' %>
+    <% @realtime_game.each do |game| %>
+      <%= form.hidden_field :string, name: 'realtime_game[]', value: game %>
+    <% end %>
 
     <%= form.button 'Button' %>
   <% end %>
@@ -16,4 +20,4 @@
 </h2>
 
 <hr>
-<%= @red_or_blue %>
+<%= @realtime_game %>

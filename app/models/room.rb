@@ -7,7 +7,7 @@ class Room < ApplicationRecord
 
   def self.check_next_turn(room_id, move_flag)
     room = Room.find_by(room_id: room_id)
-    if ((room.next_turn == true) && move_flag == 1) || ((room.next_turn == false) && move_flag.zero?)
+    if ((room.next_turn == true) && move_flag == 'red') || ((room.next_turn == false) && move_flag == 'blue')
       ''
     else
       "It's not your turn."

@@ -24,15 +24,23 @@ class Preset < ApplicationRecord
     end
   end
 
+  def self.init_realtime_game(preset_id, realtime_game, red_or_blue)
+    if red_or_blue == 'blue'
+      init_blue_realtime_game()
+    else
+      init_red_realtime_game()
+    end
+  end
+
   def self.init_y_position(preset_id, room_id, red_or_blue)
     preset_chess_detail = placed_chess(preset_id, red_or_blue)
     preset_chess_detail.each do |detail|
       which_hand = 1
       which_hand = 0 if red_or_blue == 'blue'
       which_hand = -1 if detail.blank_board.position_type == BlankBoard.camp_type
-      RealtimeGame.create(game_id: room_id, all_chess_per_hand_id: detail.all_chess_per_hand_id,
-                          blank_board_id: transform_y_position(detail.blank_board_id, red_or_blue),
-                          red_or_blue: which_hand)
+      # RealtimeGame.create(game_id: room_id, all_chess_per_hand_id: detail.all_chess_per_hand_id,
+      #                     blank_board_id: transform_y_position(detail.blank_board_id, red_or_blue),
+      #                     red_or_blue: which_hand)
     end
   end
 

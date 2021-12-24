@@ -1,0 +1,16 @@
+<h1>
+  game is over.
+</h1>
+
+<h1>
+  <%= @game_result %>
+</h1>
+
+<hr>
+Click this
+<%= form_with url: '/player/authority' do |form| %>
+  <%= form.button %>
+  <%= form.hidden_field :string, name: 'user_id', value: @user_id %>
+  <%= form.hidden_field :string, name: 'password', value: @password %>
+<% end %>
+to return to homepage.

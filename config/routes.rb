@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   post '/room', to: 'rooms#create'
 
   post '/real_time_info', to: 'preset_chess_layouts#prepared'
-  get '/real_time_info', to: 'real_time#playing'
-  put '/real_time_info', to: 'real_time#playing'
+  get '/real_time_info', to: 'realtime_games#playing'
+  put '/real_time_info', to: 'realtime_games#playing'
 
   post '/player/authority', to: 'players#home'
   get '/player/authority', to: 'players#home'
